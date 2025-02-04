@@ -27,6 +27,7 @@ fun ProfileScreen() {
     var name by remember { mutableStateOf("Рысбек Жолчуев") }
     var email by remember { mutableStateOf("glavnyi_geroi@example.com") }
     var phone by remember { mutableStateOf("+996 220 08 78 97") }
+    var hobbies by remember { mutableStateOf("Футбол, Баскетбол, Волейбол") }
 
     var showDialog by remember { mutableStateOf(false) }
     var editingField by remember { mutableStateOf("") }
@@ -45,6 +46,7 @@ fun ProfileScreen() {
                     "Имя" -> name = editingValue
                     "Email" -> email = editingValue
                     "Телефон" -> phone = editingValue
+                    "Хобби" -> hobbies = editingValue
                 }
                 showDialog = false
                 Toast.makeText(context, "$editingField обновлено!", Toast.LENGTH_SHORT).show()
@@ -63,6 +65,11 @@ fun ProfileScreen() {
         ProfileInfoItem("Имя", name) {
             editingField = "Имя"
             editingValue = name
+            showDialog = true
+        }
+        ProfileInfoItem("Хобби", hobbies) {
+            editingField = "Хобби"
+            editingValue = hobbies
             showDialog = true
         }
 
