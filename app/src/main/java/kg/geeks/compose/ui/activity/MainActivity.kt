@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import kg.geeks.compose.ui.main.MainNavScreen
+import kg.geeks.compose.ui.MainNavScreen
 
 
 class MainActivity : ComponentActivity() {

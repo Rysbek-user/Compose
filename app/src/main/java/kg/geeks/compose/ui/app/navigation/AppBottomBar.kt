@@ -1,4 +1,4 @@
-package kg.geeks.compose.ui.app
+package kg.geeks.compose.ui.app.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List

@@ -1,4 +1,4 @@
-package kg.geeks.compose.ui.screens
+package kg.geeks.compose.ui.app.character
 
 data class Character(
     val id: Int,
