@@ -1,4 +1,4 @@
-package kg.geeks.compose.ui.screens
+package kg.geeks.compose.ui.app.location
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,20 +7,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import kg.geeks.compose.ui.data.dto.LocationsResponse
+import org.koin.core.component.getScopeId
 
 @Composable
-fun EpisodesScreen(navController: NavController) {
-    val episodes = listOf(
-        Episode(1, "Pilot"),
-        Episode(2, "Lawn Mower Dog")
+fun LocationsScreen(navController: NavController) {
+    val locations = listOf<LocationsResponse>(
+
     )
 
     LazyColumn {
-        items(episodes) { episode ->
+        items(locations) { location ->
             Text(
-                text = episode.title,
+                text = location.name,
                 modifier = Modifier.clickable {
-                    navController.navigate("episode_detail/${episode.id}")
+                    navController.navigate("location_detail/${location.getScopeId()}")
                 }
             )
         }

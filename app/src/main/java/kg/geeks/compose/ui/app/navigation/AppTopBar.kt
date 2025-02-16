@@ -1,4 +1,4 @@
-package kg.geeks.compose.ui.app
+package kg.geeks.compose.ui.app.navigation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text

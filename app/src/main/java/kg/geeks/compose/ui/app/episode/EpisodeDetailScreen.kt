@@ -1,4 +1,4 @@
-package kg.geeks.compose.ui.screens
+package kg.geeks.compose.ui.app.episode
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
