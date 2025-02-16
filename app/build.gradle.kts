@@ -17,6 +17,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    buildFeatures{
+        buildConfig = true
     }
 
     buildTypes {
@@ -38,9 +45,23 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.koin.androidx.compose)
+    implementation( libs.koin.core)
+    runtimeOnly(libs.koin.compose)
+    implementation (libs.okhttp)
+    implementation (libs.logging.interceptor)
     implementation(libs.accompanist.navigation.animation)
     implementation(libs.androidx.paging.runtime.ktx)
     implementation(libs.androidx.paging.compose)
@@ -60,6 +81,8 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx.v250)
+
+
     implementation(libs.coil.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
