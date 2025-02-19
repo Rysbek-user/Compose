@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
-    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+    alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -17,18 +17,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
     }
 
     buildFeatures{
         buildConfig = true
     }
-
     buildTypes {
         debug {
-            buildConfigField("String","BASE_URL","\"https://rickandmortyapi.com/api/\"")
+            buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/api/\"")
         }
         release {
             isMinifyEnabled = false
@@ -38,57 +34,46 @@ android {
             )
         }
     }
-    android {
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
-        }
-        kotlinOptions {
-            jvmTarget = "11"
-        }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
+
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.koin.androidx.compose)
-    implementation( libs.koin.core)
-    runtimeOnly(libs.koin.compose)
-    implementation (libs.okhttp)
-    implementation (libs.logging.interceptor)
-    implementation(libs.accompanist.navigation.animation)
-    implementation(libs.androidx.paging.runtime.ktx)
-    implementation(libs.androidx.paging.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.paging.runtime)
-    implementation(libs.androidx.paging.compose)
-    implementation(libs.material3)
-    implementation(libs.material3)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-    implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.runtime.ktx.v262)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx.v250)
 
+
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation( libs.androidx.room.ktx)
+
+
+    implementation (libs.converter.gson)
+    implementation (libs.gson)
+
+    implementation (libs.kotlinx.serialization.json)
+
+    implementation (libs.okhttp3.okhttp)
+    implementation (libs.okhttp3.logging.interceptor)
+    implementation (libs.kotlinx.coroutines.android)
+
+    implementation(libs.retrofit)
+    implementation (libs.koin.androidx.compose)
+    implementation (libs.koin.android)
 
     implementation(libs.coil.compose)
+    implementation (libs.ui)
+    implementation (libs.androidx.material)
+    implementation( libs.androidx.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
