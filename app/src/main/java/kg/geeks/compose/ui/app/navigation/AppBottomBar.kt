@@ -62,5 +62,6 @@ fun AppBottomBar(
                 }
             }
         )
+
     }
 }

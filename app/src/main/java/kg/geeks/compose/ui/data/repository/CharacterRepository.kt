@@ -1,18 +1,18 @@
 package kg.geeks.compose.ui.data.repository
 
 import kg.geeks.compose.ui.data.api.CharacterApiService
-import kg.geeks.compose.ui.data.dto.CharactersResponse
+import kg.geeks.compose.ui.data.dto.CharacterResponse
+import kg.geeks.compose.ui.data.dto.CharacterResultResponse
+import retrofit2.Response
 
-class CharacterRepository(
+class CharacterRepasitory (
     private val apiService: CharacterApiService
-) {
+){
+    suspend fun fetchCharacters(): Response<CharacterResultResponse> {
+        return  apiService.fetchCharacters()
+    }
 
-    suspend fun fetchAllCharacters():List<CharactersResponse>?{
-        val response = apiService.feetchAllCharacters()
-        return if (response.isSuccessful) {
-            response.body()?.charactersResponse
-        }else{
-            emptyList()
-        }
+    suspend fun getCharacterDetails(id: Int): Response<CharacterResponse> {
+        return apiService.getCharacterById(id)
     }
 }
